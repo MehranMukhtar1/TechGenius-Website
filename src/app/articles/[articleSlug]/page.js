@@ -38,8 +38,6 @@ const text = data.article[0].content;
   
   return (
     <>
-    <Navbar/>
-
 <h1 className='my-5 text-4xl text-center font-bold'>Blogs</h1>
    <div  className='my-10 flex justify-center items-center flex-col'>
 {

@@ -2,10 +2,12 @@
 import Hero from '@/components/Hero'
 import Navbar from '@/components/Navbar'
 import Image from 'next/image'
+import {useRouter} from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react'
 export default function Home() {
+  const router = useRouter();
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("");
 
@@ -28,7 +30,7 @@ export default function Home() {
     .then(res => res.json())
     .then(data => {
       console.log(data.message);
-      if (data.type = "success") {
+      if (data.type == "success") {
         toast.success(data.message, {
           position: "bottom-right",
           autoClose: 5000,
@@ -41,6 +43,8 @@ export default function Home() {
           });
 
           localStorage.setItem("jwt_token", data.token);
+
+          router.push("/admin/dashboard")
       }
 
       else {

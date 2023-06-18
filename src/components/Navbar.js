@@ -3,7 +3,7 @@ import React from 'react'
 
 function Navbar() {
   return (
-    <div className="navbar bg-neutral text-neutral-content bg-base-100">
+    <div className="navbar bg-base-100 shadow-xl">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -12,7 +12,7 @@ function Navbar() {
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
       <li><Link href={"/"}>Home</Link></li>
       <li><Link href={"/articles"}>Blog</Link></li>
-      <li><Link href={"/categories"}>Categories</Link></li>
+      <li><Link href={"/contact"}>Contact</Link></li>
       <li><Link href={"/about"}>About</Link></li>
       </ul>
     </div>
@@ -22,7 +22,7 @@ function Navbar() {
     <ul className="menu menu-horizontal px-1">
     <li><Link href={"/"}>Home</Link></li>
       <li><Link href={"/articles"}>Blog</Link></li>
-      <li><Link href={"/categories"}>Categories</Link></li>
+      <li><Link href={"/contact"}>Contact</Link></li>
       <li><Link href={"/about"}>About</Link></li>
 
     </ul>

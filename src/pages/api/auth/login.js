@@ -10,7 +10,7 @@ const handler = async (req, res) => {
         console.log(user)
 
         if (user && (await bcrypt.compare(rPassword, user.password))) {
-            var token = jwt.sign({email: user.username, password: user.password, isAdmin: user.isAdmin}, process.env.JWT_TOKEN);
+            var token = jwt.sign({username: user.username, email: user.email, password: user.password, isAdmin: user.isAdmin}, process.env.JWT_TOKEN);
             return res.status(200).json({message: "User Logged in", type:"success", token: token})
 
         }
@@ -21,7 +21,7 @@ const handler = async (req, res) => {
     }
     
     else {
-        return res.status(200).json({ error: "Not Allowed" })
+        return res.status(200).json({ type: "error", message: "Not Allowed" })
     }
 }
 

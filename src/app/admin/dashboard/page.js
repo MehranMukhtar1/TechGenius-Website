@@ -9,6 +9,7 @@ function page() {
   const [fullName, setFullName] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [articlesNumber, setArticlesNumber] = useState(0);
+  const [isAdmin, setIsAdmin] = useState(false);
 
 
   useEffect(() => {
@@ -19,6 +20,7 @@ function page() {
       const data = jwt.decode(token, process.env.NEXT_JWT_TOKEN);
      if (data){
       setFullName(data.username);
+      setIsAdmin(data.isAdmin);
      }
     }
     
@@ -37,7 +39,10 @@ function page() {
   return (
 <>
 {
-  isLoading?<div className='flex justify-center items-center w-full h-screen'><span className="loading loading-spinner loading-md"></span></div>:(
+  isAdmin?"":<div className='text-center font-bold text-4xl flex justify-center items-center w-full h-screen'>You are not admin</div>
+}
+{
+  isLoading?<div className='flex justify-center items-center w-full h-screen'><span className="loading loading-spinner loading-md"></span></div>:isAdmin?(
     <div
     className='my-10 flex justify-center items-center w-full h-[125vh] flex-col'
     style={{
@@ -65,7 +70,7 @@ function page() {
 <Link href={"/admin/dashboard/articles/add-article"} className="mx-2 btn btn-primary">Add New Article</Link>
 </div>
 </div>
-  )
+  ):""
 }
 
 

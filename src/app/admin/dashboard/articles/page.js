@@ -9,6 +9,7 @@ function page() {
   const [fullName, setFullName] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [articles, setArticles] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false)
 
 
 
@@ -21,6 +22,8 @@ function page() {
       const data = jwt.decode(token, process.env.NEXT_JWT_TOKEN);
      if (data){
       setFullName(data.username);
+      setIsAdmin(data.isAdmin);
+      console.log(data)
      }
     }
     
@@ -39,6 +42,9 @@ function page() {
   return (
 <>
 {
+  isAdmin?"":<div className='text-center font-bold text-4xl flex justify-center items-center w-full h-screen'>You are not admin</div>
+}
+{
   isLoading?<div className='flex justify-center items-center w-full h-screen'><span className="loading loading-spinner loading-md"></span></div>:(
     <div
     className='my-10 flex justify-center items-center w-full flex-col'
@@ -49,7 +55,7 @@ function page() {
 
 <h1 className='my-5 text-center text-[40px] font-bold'>All Articles</h1> 
 {
-  articles.map(article=> {
+  isAdmin && articles.map(article=> {
     return <AdminArticlesCard onDeleteFunction={()=> {
       deleteArticle(article.slug);
     }} key={article._id} author={article.author} content={article.content} title={article.title} slug={article.slug} poster={article.poster}/>

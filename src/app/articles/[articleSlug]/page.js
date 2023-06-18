@@ -24,7 +24,7 @@ export default function Home({params}) {
   const [commentName, setCommentName] = useState("");
   const [commentContent, setCommentContent] = useState("");
 
-  const updateComments = async() => {
+  const updateComments = () => {
     fetch("http://localhost:3000/api/get-comments", {
       method: "POST",
       headers: {

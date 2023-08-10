@@ -47,7 +47,7 @@ function page() {
     }
 console.log(title, slug, poster, author, content);
 
-fetch("http://localhost:3000/api/save-article", {
+fetch(`${process.env.NEXT_PUBLIC_URL}/api/save-article`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json"

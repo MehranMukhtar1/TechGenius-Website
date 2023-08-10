@@ -20,7 +20,7 @@ export default function Home() {
     }
   }
   const login = () => {
-    fetch("http://localhost:3000/api/auth/login", {
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

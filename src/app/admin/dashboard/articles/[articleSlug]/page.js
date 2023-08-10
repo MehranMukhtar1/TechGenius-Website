@@ -51,7 +51,7 @@ function page({params}) {
     }
 console.log(id, title, slug, poster, author, content);
 
-fetch("http://localhost:3000/api/update-article", {
+fetch(`${process.env.NEXT_PUBLIC_URL}/api/update-article`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
@@ -87,7 +87,7 @@ fetch("http://localhost:3000/api/update-article", {
      }
     }
     
-    fetch("http://localhost:3000/api/get-article", {
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/get-article`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

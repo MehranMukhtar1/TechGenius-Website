@@ -25,7 +25,7 @@ export default function Home({params}) {
   const [commentContent, setCommentContent] = useState("");
 
   const updateComments = () => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/get-comments`, {
+    fetch(`${process.env.NEXT_PUBLIC_URL}api/get-comments`, {
       method: "POST",
       headers: {
       "Content-Type": "application/json"
@@ -50,7 +50,7 @@ export default function Home({params}) {
   }
 
   const addComment = () => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/add-comment`, {
+    fetch(`${process.env.NEXT_PUBLIC_URL}api/add-comment`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -76,7 +76,7 @@ export default function Home({params}) {
   }
   useEffect(() => {
    const getData = async() => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/get-article`, {
+    fetch(`${process.env.NEXT_PUBLIC_URL}api/get-article`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -102,7 +102,7 @@ const text = data.article[0].content;
 
     const getComments = async() => {
       console.log("Fetching comments", articleSlug);
-      fetch(`${process.env.NEXT_PUBLIC_URL}/api/get-comments`, {
+      fetch(`${process.env.NEXT_PUBLIC_URL}api/get-comments`, {
         method: "POST",
         headers: {
         "Content-Type": "application/json"

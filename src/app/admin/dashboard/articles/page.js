@@ -27,7 +27,7 @@ function page() {
      }
     }
     
-        fetch(`${process.env.NEXT_PUBLIC_URL}/api/all-articles`)
+        fetch(`${process.env.NEXT_PUBLIC_URL}api/all-articles`)
         .then(res=>res.json())
         .then(data => {
           setArticles(data.articles)

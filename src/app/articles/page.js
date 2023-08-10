@@ -8,7 +8,7 @@ import { useState, useEffect} from 'react'
 export default function Home() {
 
   const searchArticle =() => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/filter`, {
+    fetch(`${process.env.NEXT_PUBLIC_URL}api/filter`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -26,7 +26,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
-   fetch(`${process.env.NEXT_PUBLIC_URL}/api/all-articles`)
+   fetch(`${process.env.NEXT_PUBLIC_URL}api/all-articles`)
    .then(res => res.json())
     .then(data=> {
 

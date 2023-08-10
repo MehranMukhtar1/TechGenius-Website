@@ -5,7 +5,7 @@ import React from 'react'
 function ArticlesCard({onDeleteFunction, title, poster, slug, content, author}) {
   const router = useRouter();
   const deleteArticle = () => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}api/delete-article`, {
+    fetch(`${process.env.NEXT_PUBLIC_URL}/api/delete-article`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

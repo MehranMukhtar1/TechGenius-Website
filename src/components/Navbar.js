@@ -2,6 +2,9 @@ import Link from 'next/link'
 import React from 'react'
 
 function Navbar() {
+
+
+  
   return (
     <div className="navbar bg-base-100 shadow-xl">
   <div className="navbar-start">

@@ -44,11 +44,11 @@ function page() {
 {
   isLoading?<div className='flex justify-center items-center w-full h-screen'><span className="loading loading-spinner loading-md"></span></div>:isAdmin?(
     <div
-    className='my-10 flex justify-center items-center w-full h-[125vh] flex-col'
+    className='my-10 flex justify-center items-center w-full h-[150vh] flex-col'
     style={{
-      minWidth: "100vh"
+      minWidth: "120vh"
     }}>
-  
+   <Link href={"/"} className="my-10 btn btn-primary">Back to Homepage</Link>
 <h1 className=' text-center text-[50px] font-bold'>Dashboard</h1>
 <h1 className='my-5 text-center text-2xl font-bold'>Welcome, {fullName}</h1>
 

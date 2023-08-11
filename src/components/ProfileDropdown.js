@@ -27,7 +27,7 @@ function ProfileDropdown() {
     <div className="dropdown dropdown-end shadow-5xl">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-             <img src={avatar} loading='lazy'/>
+             <img src={avatar==""?`https://ui-avatars.com/api/?name=${username}`:avatar} loading='lazy'/>
         </div>
       </label>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">

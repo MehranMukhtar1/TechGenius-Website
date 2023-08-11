@@ -5,7 +5,7 @@ import Navbar from '@/components/NavbarOld'
 import Image from 'next/image'
 import {BiTimeFive} from "react-icons/bi";
 import 'react-toastify/dist/ReactToastify.css';
-
+import {useUserStore} from "../../../store/store"
 import { ToastContainer, toast } from 'react-toastify';
 
 import {AiOutlineRead} from "react-icons/ai";
@@ -14,6 +14,8 @@ import { useState, useEffect} from 'react'
 import CommentCard from '@/components/CommentCard'
 
 export default function Home({params}) {
+  const { isAlert, alertMsg, alertType, setIsAlert, setAlertMsg, setAlertType, setIsLogin, isLogin, username, setUsername, setAvatar } = useUserStore();
+
   const {articleSlug} = params;
   const [article, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,8 +26,9 @@ export default function Home({params}) {
   const [commentName, setCommentName] = useState("");
   const [commentContent, setCommentContent] = useState("");
 
-  const updateComments = () => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/get-comments`, {
+  const updateComments = async() => {
+    console.log("updating articles")
+    await fetch(`${process.env.NEXT_PUBLIC_URL}/api/get-comments`, {
       method: "POST",
       headers: {
       "Content-Type": "application/json"
@@ -49,13 +52,13 @@ export default function Home({params}) {
     }
   }
 
-  const addComment = () => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/add-comment`, {
+  const addComment = async() => {
+    await fetch(`${process.env.NEXT_PUBLIC_URL}/api/add-comment`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({name: commentName,slug:articleSlug,content: commentContent})
+      body: JSON.stringify({name: username,slug:articleSlug,content: commentContent})
      })
      .then(res => res.json())
       .then(data=> {
@@ -71,8 +74,9 @@ export default function Home({params}) {
           });
 
       })
-
       updateComments();
+      setCommentContent("");
+      setCommentName("")
   }
   useEffect(() => {
    const getData = async() => {
@@ -188,11 +192,17 @@ theme="dark"
             })
           }
           <h1 className='my-4 text-center font-bold text-4xl'>Add a Comment</h1>
-          <input type="text" value={commentName} name='name' onChange={onCommentChange} placeholder="Enter name..." className="input input-bordered input-primary w-full max-w-xs" />
+         {
+          isLogin?(
+            <>
+             {/* <input type="text" value={commentName} name='name' onChange={onCommentChange} placeholder="Enter name..." className="input input-bordered input-primary w-full max-w-xs" /> */}
       
-          <textarea value={commentContent} name='content' onChange={onCommentChange} className="my-4 textarea textarea-primary" placeholder="Enter Comment...."></textarea>
+      <textarea value={commentContent} name='content' onChange={onCommentChange} className="my-4 textarea textarea-primary" placeholder="Enter Comment...."></textarea>
 
-          <button onClick={addComment} className='btn btn-primary'>Post Comment</button>
+      <button onClick={addComment} className='my-5 btn btn-primary'>Post Comment</button>
+            </>
+          ): <h2 className='font-bold'>You need to login to add comment</h2>
+         }
         </div>
     </>
 

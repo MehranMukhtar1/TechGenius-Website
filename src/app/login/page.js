@@ -4,7 +4,8 @@ import { useState } from 'react';
 import {useUserStore} from '../../store/store';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-
+import signupBg from "../../../public/signup-bg.jpg";
+import loginBg from "../../../public/login-bg.jpg";
 export default function Home() {
  
 
@@ -47,28 +48,34 @@ export default function Home() {
     })
   }
   return (
-    
-  
-
-   <div style={{
-    height: "60vh !important",
-    maxHeight: "80vh !important"
-   }} className='my-10 w-full flex justify-between items-center flex-col'>
+    <div style={{
+      backgroundImage: "linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('/login-bg.jpg')",
+      height: "100vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundSize: "cover" }}>
+      
+      <div style={{
+        height: "60vh !important",
+      }} className='text-white my-10 w-full flex justify-between items-center flex-col'>
+ 
    <h1 className='font-bold text-4xl'>
     Login Page
    </h1>
    <input value={username} onChange={(e)=> {
-setUsername(e.target.value)    
+     setUsername(e.target.value)    
    }} type="text" placeholder="Username..." className="my-5 input input-bordered input-primary w-full max-w-xs" />
    
    <input type="password" value={password} onChange={(e)=> {
-    setPassword(e.target.value)
-   }} placeholder="Password..." className="my-5 input input-bordered input-primary w-full max-w-xs" />
+     setPassword(e.target.value)
+    }} placeholder="Password..." className="my-5 input input-bordered input-primary w-full max-w-xs" />
 
    <button onClick={checkLogin} className='btn btn-primary'>Login</button>
    <p className='my-5'>Don't have an account?</p>
    <Link className='btn btn-primary' href={"/signup"}>Create new Account</Link>
    </div>
+    </div>
     
-  )
-}
+    )
+  }

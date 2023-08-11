@@ -49,27 +49,35 @@ export default function Home() {
 
   return (
     <div style={{
+      backgroundImage: "linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('/signup-bg.jpg')",
+      height: "100vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundSize: "cover" }}>
+    <div style={{
       height: "80vh !important",
       maxHeight: "100vh !important"
-     }} className=' w-full flex justify-evenly items-center flex-col'>
+    }} className='text-white w-full flex justify-evenly items-center flex-col'>
      <h1 className='font-bold text-4xl'>
       Create an Account
      </h1>
      <input value={username} onChange={(e)=> {
-  setUsername(e.target.value)    
-     }} type="text" placeholder="Username..." className="my-5 input input-bordered input-primary w-full max-w-xs" />
+       setUsername(e.target.value)    
+      }} type="text" placeholder="Username..." className="my-5 input input-bordered input-primary w-full max-w-xs" />
      <input value={email} onChange={(e)=> {
-  setEmail(e.target.value)    
-     }} type="email" placeholder="Email..." className="my-5 input input-bordered input-primary w-full max-w-xs" />
+       setEmail(e.target.value)    
+      }} type="email" placeholder="Email..." className="my-5 input input-bordered input-primary w-full max-w-xs" />
 
      <input type="password" value={password} onChange={(e)=> {
-      setPassword(e.target.value)
+       setPassword(e.target.value)
      }} placeholder="Password..." className="my-5 input input-bordered input-primary w-full max-w-xs" />
   
      <button onClick={createAccount} className='btn btn-primary'>Create Account</button>
      <p className='my-5'>Already have an account? </p>
      <Link href={"/login"} className="btn btn-primary">Login</Link>
      </div>
+       </div>
       
   )
 }

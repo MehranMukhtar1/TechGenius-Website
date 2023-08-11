@@ -1,7 +1,7 @@
 "use client"
 import ArticlesCard from '@/components/ArticlesCard'
 import Hero from '@/components/Hero'
-import Navbar from '@/components/Navbar'
+import Navbar from '@/components/NavbarOld'
 import Image from 'next/image'
 import {BiTimeFive} from "react-icons/bi";
 import 'react-toastify/dist/ReactToastify.css';

@@ -1,6 +1,6 @@
 "use client"
 import Hero from '@/components/Hero'
-import Navbar from '@/components/Navbar'
+import Navbar from '@/components/NavbarOld'
 import Image from 'next/image'
 import {useRouter} from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
